@@ -5,11 +5,11 @@
 Разверни проект `myownvpn` — персональный dual-egress VPN с нуля.
 
 Ты должен создать ВСЕ файлы проекта, запросить у пользователя данные о серверах,
-заполнить конфиги, сгенерировать ключи, развернуть всё на двух VPS серверах,
+заполнить конфиги, сгенерировать ключи, развернуть всё на двух VPS-серверах,
 проверить работоспособность и выдать готовые клиентские конфиги.
 
 **Важно:** следуй инструкциям строго по порядку. Не пропускай шаги. Если на
-каком-то шаге возникает ошибка — остановись и сообщи пользователю что именно
+каком-то шаге возникает ошибка — остановись и сообщи пользователю, что именно
 пошло не так, не продолжай дальше.
 
 ---
@@ -2707,13 +2707,13 @@ Supported formats in seed files (`rules/*.seed.txt`):
 
 1. **PROJECT_SLUG** — короткое название проекта латиницей (например `myvpn`, `vpn1`). Используется в именах сервисов и для генерации UUID.
 2. **RU_PUBLIC_IP** — публичный IPv4-адрес российского сервера (тот, который вернёт `curl -4 ifconfig.me` с сервера).
-3. **RU_PRIMARY_NIC** — имя основного сетевого интерфейса RU сервера (обычно `eth0`, `ens3`, `enp1s0`). Можно узнать командой `ip -4 addr show` на сервере.
-4. **RU_SSH_PORT** — порт SSH на RU сервере (обычно `22`).
-5. **RU_SSH_PASSWORD** — пароль root на RU сервере.
+3. **RU_PRIMARY_NIC** — имя основного сетевого интерфейса RU-сервера (обычно `eth0`, `ens3`, `enp1s0`). Можно узнать командой `ip -4 addr show` на сервере.
+4. **RU_SSH_PORT** — порт SSH на RU-сервере (обычно `22`).
+5. **RU_SSH_PASSWORD** — пароль root на RU-сервере.
 6. **FOREIGN_PUBLIC_IP** — публичный IPv4-адрес зарубежного сервера.
-7. **FOREIGN_PRIMARY_NIC** — имя основного сетевого интерфейса Foreign сервера.
-8. **FOREIGN_SSH_PORT** — порт SSH на Foreign сервере (обычно `22`).
-9. **FOREIGN_SSH_PASSWORD** — пароль root на Foreign сервере.
+7. **FOREIGN_PRIMARY_NIC** — имя основного сетевого интерфейса Foreign-сервера.
+8. **FOREIGN_SSH_PORT** — порт SSH на Foreign-сервере (обычно `22`).
+9. **FOREIGN_SSH_PASSWORD** — пароль root на Foreign-сервере.
 10. **Devices** — список устройств пользователя. Для каждого спроси:
     - `name` (техническое имя, латиницей, например `iphone`, `macbook`, `android`)
     - `display_name` (отображаемое имя, например `Alice iPhone`)
@@ -2724,7 +2724,7 @@ Supported formats in seed files (`rules/*.seed.txt`):
 
 Получив ответ, переходи к следующему вопросу.
 
-После сбора всех данных покажи сводную таблицу для подтверждения перед тем как
+После сбора всех данных покажи сводную таблицу для подтверждения перед тем, как
 применять изменения.
 
 ---
@@ -2733,7 +2733,7 @@ Supported formats in seed files (`rules/*.seed.txt`):
 
 #### 5.1 Обнови `config/users.yaml`
 
-Замени шаблонных пользователей (alice-iphone, alice-macbook, family-member) на реальных, которых назвал пользователь в Фазе 4. Убедись что первый пользователь включён (`enabled: true`). UUID и short_id не заполняй — они сгенерируются автоматически.
+Замени шаблонных пользователей (alice-iphone, alice-macbook, family-member) на реальных, которых назвал пользователь в Фазе 4. Убедись, что первый пользователь включён (`enabled: true`). UUID и short_id не заполняй — они сгенерируются автоматически.
 
 Пример:
 
@@ -2801,16 +2801,16 @@ sudo apt-get install -y sshpass
 
 #### 6.2 Проверь SSH-доступность серверов
 
-Перед запуском полного bootstrap, проверь что SSH работает:
+Перед запуском полного bootstrap проверь, что SSH работает:
 
 ```bash
 source scripts/lib/common.sh
 load_env_file inventory/servers.env
 
-# Проверка RU сервера
+# Проверка RU-сервера
 sshpass -p "$RU_SSH_PASSWORD" ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10 -p "$RU_SSH_PORT" "root@$RU_SSH_HOST" "echo 'SSH OK: RU server'"
 
-# Проверка Foreign сервера
+# Проверка Foreign-сервера
 sshpass -p "$FOREIGN_SSH_PASSWORD" ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10 -p "$FOREIGN_SSH_PORT" "root@$FOREIGN_SSH_HOST" "echo 'SSH OK: Foreign server'"
 ```
 
@@ -3024,5 +3024,5 @@ git commit -m "Initial myownvpn setup"
 3. **Не редактируй** файлы в `build/` вручную — всегда используй
    `render_artifacts.py --strict`.
 4. **Не удаляй** `inventory/runtime-secrets.env`.
-5. При любой ошибке деплоя — остановись, сообщи что пошло не так, и предложи
+5. При любой ошибке деплоя — остановись, сообщи, что пошло не так, и предложи
    откат через `scripts/rollback_remote.sh`.
