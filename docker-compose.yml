@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    container_name: ted-presentation
+    restart: unless-stopped
+    networks:
+      - ted-presentation
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ted-presentation.rule=Host(`projects.selickiy.space`) && PathPrefix(`/ted-presentation`)"
+      - "traefik.http.routers.ted-presentation.entrypoints=websecure"
+      - "traefik.http.routers.ted-presentation.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.ted-presentation-stripprefix.stripprefix.prefixes=/ted-presentation"
+      - "traefik.http.routers.ted-presentation.middlewares=ted-presentation-stripprefix"
+      - "traefik.http.services.ted-presentation.loadbalancer.server.port=80"
+
+networks:
+  ted-presentation:
+    driver: bridge
+  traefik:
+    external: true

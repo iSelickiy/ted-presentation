@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Материалы после выступления</title>
+<style>
+:root {
+  --bg: #08090d;
+  --text: #f3f5f8;
+  --muted: #a7adba;
+  --accent: #00d4ff;
+  --accent2: #ff3366;
+  --card: rgba(17, 19, 26, 0.9);
+  --border: #2a2f3d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    linear-gradient(rgba(8, 9, 13, 0.78), rgba(8, 9, 13, 0.94)),
+    url("../assets/backgrounds/bg-cards.jpg") center / cover fixed,
+    var(--bg);
+  color: var(--text);
+}
+
+main {
+  width: min(1080px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.back-link,
+.file-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.back-link {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.hero {
+  max-width: 780px;
+  margin-bottom: 44px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 16px 0 18px;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.98;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(20px, 2.5vw, 29px);
+  line-height: 1.35;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.material-card {
+  min-height: 100%;
+  padding: 26px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.material-card h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.material-card p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.file-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.file-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  font-weight: 800;
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.file-link:hover,
+.file-link:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.55);
+  outline: none;
+}
+
+.file-link span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.note {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  main {
+    width: min(100% - 28px, 1080px);
+    padding-top: 30px;
+  }
+
+  .topline {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 38px;
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .file-link {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+<main>
+  <div class="topline">
+    <a class="back-link" href="../">← Вернуться к презентации</a>
+    <div class="date">Материалы после выступления</div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">ИИ против белого листа</div>
+    <h1>Заберите материалы</h1>
+    <p class="lead">Здесь лежат инструкции и промпты, которые можно забрать, адаптировать под себя и отдать своему coding agent.</p>
+  </section>
+
+  <section class="materials-grid" aria-label="Список материалов">
+    <article class="material-card">
+      <h2>Routine-agent</h2>
+      <p>Заготовка для личного агента, который помогает разбирать регулярную рабочую операционку.</p>
+      <ul class="file-list">
+        <li><a class="file-link" href="../routine-agent-guide/02-human-setup-guide.md">Инструкция для человека <span>Markdown</span></a></li>
+        <li><a class="file-link" href="../routine-agent-guide/01-agent-instructions-template.md">Шаблон инструкции агента <span>Markdown</span></a></li>
+        <li><a class="file-link" href="../routine-agent-guide/03-bootstrap-agent-prompt.md">Промпт для сборки папки <span>Markdown</span></a></li>
+      </ul>
+    </article>
+
+    <article class="material-card">
+      <h2>MyOwnVPN</h2>
+      <p>Гайд и промпт для развёртывания личного dual-egress VPN через AI-агента.</p>
+      <ul class="file-list">
+        <li><a class="file-link" href="../vpn-agent-guide/HUMAN-GUIDE.md">Гайд для человека <span>Markdown</span></a></li>
+        <li><a class="file-link" href="../vpn-agent-guide/PROMPT.md">Промпт для AI-агента <span>Markdown</span></a></li>
+      </ul>
+    </article>
+  </section>
+
+  <p class="note">Файлы открываются как обычный Markdown. Их можно читать, сохранять и копировать в свой рабочий проект.</p>
+</main>
+</body>
+</html>
