@@ -114,7 +114,7 @@ h1 {
   line-height: 1.5;
 }
 
-.file-list {
+.download-list {
   display: grid;
   gap: 12px;
   margin: 0;
@@ -147,6 +147,10 @@ h1 {
   color: var(--muted);
   font-size: 13px;
   font-weight: 800;
+}
+
+.download-all {
+  margin-top: 20px;
 }
 
 .note {
@@ -195,25 +199,26 @@ h1 {
   <section class="materials-grid" aria-label="Список материалов">
     <article class="material-card">
       <h2>Routine-agent</h2>
-      <p>Заготовка для личного агента, который помогает разбирать регулярную рабочую операционку.</p>
-      <ul class="file-list">
-        <li><a class="file-link" href="../routine-agent-guide/02-human-setup-guide.md">Инструкция для человека <span>Markdown</span></a></li>
-        <li><a class="file-link" href="../routine-agent-guide/01-agent-instructions-template.md">Шаблон инструкции агента <span>Markdown</span></a></li>
-        <li><a class="file-link" href="../routine-agent-guide/03-bootstrap-agent-prompt.md">Промпт для сборки папки <span>Markdown</span></a></li>
+      <p>Заготовка для личного агента, который помогает разбирать регулярную рабочую операционку. Внутри три Markdown-файла.</p>
+      <ul class="download-list">
+        <li><a class="file-link" href="../downloads/routine-agent-guide.zip" download>Скачать routine-agent <span>ZIP</span></a></li>
       </ul>
     </article>
 
     <article class="material-card">
       <h2>MyOwnVPN</h2>
-      <p>Гайд и промпт для развёртывания личного dual-egress VPN через AI-агента.</p>
-      <ul class="file-list">
-        <li><a class="file-link" href="../vpn-agent-guide/HUMAN-GUIDE.md">Гайд для человека <span>Markdown</span></a></li>
-        <li><a class="file-link" href="../vpn-agent-guide/PROMPT.md">Промпт для AI-агента <span>Markdown</span></a></li>
+      <p>Гайд и промпт для развёртывания личного dual-egress VPN через AI-агента. Внутри два Markdown-файла.</p>
+      <ul class="download-list">
+        <li><a class="file-link" href="../downloads/vpn-agent-guide.zip" download>Скачать MyOwnVPN <span>ZIP</span></a></li>
       </ul>
     </article>
   </section>
 
-  <p class="note">Файлы открываются как обычный Markdown. Их можно читать, сохранять и копировать в свой рабочий проект.</p>
+  <div class="download-all">
+    <a class="file-link" href="../downloads/ted-presentation-materials.zip" download>Скачать все материалы одним архивом <span>ZIP</span></a>
+  </div>
+
+  <p class="note">Архивы скачиваются напрямую. Внутри лежат Markdown-файлы, которые можно открыть локально в редакторе или скопировать в свой рабочий проект.</p>
 </main>
 </body>
 </html>
